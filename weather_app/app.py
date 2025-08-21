@@ -8,7 +8,7 @@ load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = "replace-with-a-random-secret"  # needed for flash messages
-API_KEY = os.getenv("OPENWEATHER_API_KEY", "6a9a6c17f63336ef20e34bac34cc7903")  # fallback
+API_KEY = os.getenv("OPENWEATHER_API_KEY", "YOUR_API_KEY")  # fallback
 
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
