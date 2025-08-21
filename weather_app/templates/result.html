@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Weather App</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <a href="{{ url_for('home') }}" class="back-link">← Back</a>
+      <h2>Weather in {{ weather.city }}</h2>
+
+      <div class="weather-grid">
+        <div class="weather-main">
+          {% if weather.icon %}
+          <img alt="icon" src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png">
+          {% endif %}
+          <div>
+            <p class="temp">{{ weather.temp }}{{ weather.units_label }}</p>
+            <p class="condition">{{ weather.condition }}</p>
+            <p class="feels">Feels like: {{ weather.feels_like }}{{ weather.units_label }}</p>
+          </div>
+        </div>
+
+        <div class="weather-stats">
+          <p><strong>Humidity:</strong> {{ weather.humidity }}%</p>
+          <p><strong>Pressure:</strong> {{ weather.pressure }} hPa</p>
+          <p><strong>Wind:</strong> {{ weather.wind_speed }} {{ 'm/s' if units=='metric' else 'mph' }}</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">Powered by OpenWeatherMap API</div>
+  </footer>
+</body>
+</html>
